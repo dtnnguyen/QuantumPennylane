@@ -3,9 +3,9 @@
 ## Pennylane Jupyter Notebook 
 How to start 
 ```
-cd ~/Documents/.../xandu_env
+cd ~/Documents/.../xanadu_env
 source ./bin/activate
-xandu_env
+xanadu_env
 (xanadu_env) ~/Documents/.../ $ jupyter notebook
 ```
 
