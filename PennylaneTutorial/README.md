@@ -8,7 +8,7 @@ Each script is one small experiment. Its plot is saved under [`images/`](images/
 
 | Script | Video | What it does |
 |---|---|---|
-| [`01_first_circuit.py`](01_first_circuit.py) | 2. My first quantum circuit in PennyLane | First circuit: flip both qubits, rotate qubit 0 by θ, measure ⟨Z⟩ |
+| [`01_first_circuit.py`](01_first_circuit.py) | [2. My first quantum circuit in PennyLane](https://www.youtube.com/watch?v=2T8lSejPFog&list=PL_hJxz_HrXxsY23iiLZTxiPctXKYI6tNV&index=2) | First circuit: flip both qubits, rotate qubit 0 by θ, measure ⟨Z⟩ |
 | [`01b_axis_sweep.py`](01b_axis_sweep.py) | Not in the tutorial | My own extension of video 2: the same circuit, generalised to choose the Pauli gate, rotation axis and measurement axis |
 
 Run from the repo root, e.g. `python PennylaneTutorial/01_first_circuit.py`.
