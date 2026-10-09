@@ -11,9 +11,13 @@ venv/
 env/
 xanadu_env/
 
-# Jupyter
+# Jupyter (notebooks are generated from the .py files with jupytext)
 .ipynb_checkpoints/
+PennylaneTutorial/*.ipynb
 
 # Editors
 .vscode/
 .idea/
+
+# Created by `pip install -e .`
+*.egg-info/

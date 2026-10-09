@@ -1,0 +1,20 @@
+# Makes `qcircuits` importable from anywhere in this environment, including
+# scripts in PennylaneTutorial/. Install once, from the repository root:
+#
+#   pip install -e .
+#
+# "-e" (editable) links to this folder instead of copying it, so edits to
+# qcircuits/ take effect immediately with no reinstall.
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qcircuits"
+version = "0.1.0"
+description = "Reusable PennyLane circuits from the PennyLane tutorials"
+requires-python = ">=3.11"
+
+[tool.setuptools]
+packages = ["qcircuits"]

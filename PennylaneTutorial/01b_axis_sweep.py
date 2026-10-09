@@ -1,14 +1,17 @@
+# %%
 import pennylane as qml
 from pennylane import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
+# %%
 # Image Folder
 try:
     IMAGES = Path(__file__).parent / "images"   # run as a script: images/ next to this file
 except NameError:
     IMAGES = Path.cwd() / "images"              # Jupyter has no __file__: images/ next to the notebook
 
+# %%
 # A qubit is referred to as a wire
 dev = qml.device('default.qubit', wires=2)
 
@@ -16,6 +19,7 @@ dev = qml.device('default.qubit', wires=2)
 PAULI_GATE_MAPPING = { "paulix" : qml.PauliX, "pauliy" : qml.PauliY, "pauliz" : qml.PauliZ}
 ROTATE_GATE_MAPPING = { "rx" : qml.RX, "ry" : qml.RY, "rz" : qml.RZ}
 
+# %%
 def general_circuit(theta, pauli_axis="paulix", rotate_axis="ry"):
     # 1. Extract the single-letter axis (e.g., 'x', 'y')
     axis_1 = pauli_axis.lower()[-1]
@@ -33,6 +37,7 @@ def general_circuit(theta, pauli_axis="paulix", rotate_axis="ry"):
     # 4. Execute circuit
     return pennylane_circuit(theta, pauli_axis=pauli_axis, rotate_axis=rotate_axis, exp_axis=third_axis)
     
+# %%
 # positional arguments passed to a @qml.qnode are automatically treated as differentiable quantum parameters.
 # PennyLane expects numerical or array-like values for its positional arguments to compute quantum gradients.
 # We should pass non-differentiable arguments as keyword arguments.
@@ -65,6 +70,7 @@ def pennylane_circuit(theta, pauli_axis="paulix", rotate_axis="ry", exp_axis="pa
     expval_gate = PAULI_GATE_MAPPING[exp_axis.lower()]
     return qml.expval(expval_gate(wires=0))
 
+# %%
 thetas = np.arange(-np.pi, np.pi, 0.01)
 measurements_px_ry = np.zeros(len(thetas))
 measurements_py_rx = np.zeros(len(thetas))
@@ -75,6 +81,7 @@ for i, theta in enumerate(thetas):
     measurements_py_rx[i] = general_circuit(theta, pauli_axis="pauliy", rotate_axis="rx")
     measurements_pz_ry[i] = general_circuit(theta, pauli_axis="pauliz", rotate_axis="ry")
 
+# %%
 # Setups 1 and 2 both give -cos(theta), so their curves overlap; setup 3 gives sin(theta)
 plt.plot(thetas, measurements_px_ry, color="red", 
     linestyle="-",          # Solid line
